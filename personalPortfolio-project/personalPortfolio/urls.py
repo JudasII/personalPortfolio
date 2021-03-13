@@ -20,5 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.job),
-]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('home/', views.job, name='home'),
+    path('jobs/<int:job_id>',views.detail,name='detail'),
+]
+
+urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
